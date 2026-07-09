@@ -1,0 +1,47 @@
+.tarjeta {
+  background-color: rgb(96, 96, 255);
+  border-radius: 20px;
+  font-style: italic;
+}
+
+
+.edit {
+  color: green
+}
+
+
+.delete {
+  color: red;
+}
+
+
+.list {
+  display: flex;
+  flex-direction: column;
+  background-color: coral;
+  margin: 20px;
+  border-radius: 20px;
+  color: black;
+  gap: 10px
+}
+
+
+.button {
+  background-color: goldenrod;
+  border-radius: 20px;
+}
+
+
+.input {
+  background-color: goldenrod;
+  margin: 10px;
+  border-color: white;
+}
+
+.form {
+  background-color: goldenrod;
+  border-radius: 20px;
+  color: white;
+  border-color: white;
+  margin: 10px;
+}
