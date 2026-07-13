@@ -3,16 +3,19 @@ import Item from './Item';
 
 function List({ items, deleteItem, editItem}) {
     return (
-        <ul className="list">
-            {items.map((item) => (
-                <Item
-                key={item.id}
-                item={item}
-                deleteItem={deleteItem}
-                editItem={editItem}
-                />
-            ))}
-        </ul>
+        <div>            
+            <ul className="list">
+                <p>Total: {items.length}</p>
+                {items.map((item) => (
+                    <Item
+                    key={item.id}
+                    item={item}
+                    deleteItem={deleteItem}
+                    editItem={editItem}
+                    />
+                ))}
+            </ul>
+        </div>
     );
 }
 
