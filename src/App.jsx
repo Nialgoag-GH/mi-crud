@@ -10,7 +10,10 @@ function App() {
   useEffect(() => {
     try {
       const storedItems = JSON.parse(localStorage.getItem('items')) || [];
-      setItems(Array.isArray(storedItems) ? storedItems : []);
+      const normalizedItems = Array.isArray(storedItems)
+        ? storedItems.map((item) => ({ ...item, completed: Boolean(item.completed) }))
+        : [];
+      setItems(normalizedItems);
     } catch (error) {
       console.error('Error reading items from localStorage', error);
       setItems([]);
@@ -23,26 +26,53 @@ function App() {
 
   const addOrUpdateItem = (value) => {
     if (itemToEdit) {
-      setItems(items.map(item => item.id === itemToEdit.id ? {...item, value} : item));
+      setItems((currentItems) =>
+        currentItems.map((item) =>
+          item.id === itemToEdit.id ? { ...item, value, completed: item.completed || false } : item
+        )
+      );
       setItemToEdit(null);
     } else {
-      setItems([...items, { id: Date.now(), value}]);
+      setItems((currentItems) => [...currentItems, { id: Date.now(), value, completed: false }]);
     }
   };
 
   const deleteItem = (id) => {
-    setItems(items.filter(item => item.id !== id));
+    setItems((currentItems) => currentItems.filter((item) => item.id !== id));
   };
 
   const editItem = (item) => {
     setItemToEdit(item);
   };
 
+  const toggleCompleteItem = (id) => {
+    setItems((currentItems) =>
+      currentItems.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
+  };
+
+  const deleteAllItems = () => {
+    setItems([]);
+  };
+
+  const deleteVisibleItems = (ids) => {
+    setItems((currentItems) => currentItems.filter((item) => !ids.includes(item.id)));
+  };
+
   return (
     <div className='tarjeta'>
       <h1>CRUD con Local Storage</h1>
       <Form addOrUpdateItem={addOrUpdateItem} itemToEdit={itemToEdit}/>
-      <List items={items} deleteItem={deleteItem} editItem={editItem}/>
+      <List
+        items={items}
+        deleteItem={deleteItem}
+        editItem={editItem}
+        toggleCompleteItem={toggleCompleteItem}
+        deleteAllItems={deleteAllItems}
+        deleteVisibleItems={deleteVisibleItems}
+      />
     </div>
   );
 }

@@ -1,50 +1,82 @@
-.tarjeta {
-  background-color: rgb(96, 96, 255);
+* {
   border-radius: 20px;
+  margin: 10px;
+}
+
+.tarjeta {
+  background-color: #2f4b7c;
+  color: #f5f7fa;
+}
+
+.tarjeta h1 {
   font-style: italic;
 }
 
-
 .edit {
-  color: green
+  color: #2e7d32;
+  background-color: #e8f5e9;
 }
-
 
 .delete {
-  color: red;
+  color: #b71c1c;
+  background-color: #fdecea;
 }
-
 
 .list {
   display: flex;
   flex-direction: column;
-  background-color: coral;
+  background-color: #e8edf5;
+  color: #243447;
+  padding: 15px;
   margin: 20px;
-  border-radius: 20px;
-  color: black;
-  gap: 10px
 }
 
+.list-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.list-actions .buscador {
+  min-width: 220px;
+}
+
+.complete {
+  color: #b8860b;
+  background-color: #fff8e1;
+}
 
 .button {
-  background-color: goldenrod;
-  border-radius: 20px;
+  background-color: #ebd474;
+  color: #1f2a44;
 }
 
-
 .input {
-  background-color: goldenrod;
-  margin: 10px;
-  border-color: white;
+  background-color: #f7f3eb;
+  border-color: #8c6b3f;
+  color: #243447;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.input:focus,
+.buscador:focus {
+  outline: none;
+  border-color: #2f4b7c;
+  box-shadow: 0 0 0 3px rgba(47, 75, 124, 0.2);
 }
 
 .form {
-  background-color: goldenrod;
-  border-radius: 20px;
-  color: white;
-  border-color: white;
-  margin: 20px;
+  background-color: #d4b483;
+  color: #1f2a44;
+  border-color: #8c6b3f;
   padding: 10px;
   gap: 8px;
 }
 
+.buscador {
+  background-color: #d8dce6;
+  border-color: #5c6b7a;
+  color: #243447;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
